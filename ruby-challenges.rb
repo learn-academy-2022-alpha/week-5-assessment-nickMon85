@@ -9,6 +9,14 @@ letter_o = 'o'
 # Expected output: ['coffee', 'soda water']
 letter_t = 't'
 # Expected output: ['tea', 'water', 'soda water']
+def find_let(array, letter)
+    array.select do |value|
+      value.include?(letter)
+    end
+end
+p find_let(beverages_array,letter_o)
+p find_let(beverages_array,letter_t)
+
 
 
 # -------------------2) Create a method that takes in an array of numbers and returns the sum of the numbers. Use the test variables provided.
@@ -17,7 +25,16 @@ nums_array1 = [42, 7, 27]
 # Expected output: 76
 
 nums_array2 = [25, 17, 47, 11]
-# Expected output: 100
+#Expected output: 100
+def add_arr (num_arr)
+  num_arr.map do |value|
+    puts num_arr.sum
+  end 
+end
+
+add_arr nums_array1
+add_arr nums_array2
+
 
 
 
@@ -25,7 +42,32 @@ nums_array2 = [25, 17, 47, 11]
 
 # Expected output example: 'The Trek bike has 2 wheels and is going 0 mph.'
 
-
+class Bike 
+  def initialize(model_parameter)
+    @model= model_parameter
+    @wheels=2
+    @current_speed=0
+  end
+  def bike_info
+    "this bike is a #{@model} model, it has #{@wheels} wheels and is going #{@current_speed}mph"
+  end 
+  def pedal_faster (speed)
+    @current_speed+= speed
+  end 
+  def brake (speed)
+    @current_speed - speed >= 0 ? @current_speed -= speed : @current_speed = 0
+  end
+end
+my_bike = Bike.new('huffy')
+p my_bike.bike_info
+my_bike.pedal_faster(10)
+p my_bike.bike_info
+my_bike.pedal_faster(18)
+p my_bike.bike_info
+my_bike.brake(5)
+p my_bike.bike_info
+my_bike.brake(25)
+p my_bike.bike_info
 
 # -------------------3b) Add the ability to pedal faster and brake. The pedal_faster method should increase the speed by a given amount. The brake method should decrease the speed by a given amount. The bike cannot go negative speeds.
 
